@@ -6,18 +6,16 @@ from sklearn.datasets import load_breast_cancer
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score
-from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
-from sklearn.metrics import accuracy_score
 
 def neuralNetworkWeights():
-    # This code was originally taken and modified from
+    # This code was originally taken and modified from https://mlrose.readthedocs.io/en/stable/source/intro.html
     hidden_nodes = [2]
 
     NNRHC = mlrose.NeuralNetwork(hidden_nodes, activation='relu', algorithm='random_hill_climb', max_iters=100,
                                  bias=True, is_classifier=True, learning_rate=0.1, clip_max=10000000000.0,
                                  restarts=20, random_state=1, early_stopping=True)
 
-    schedule = mlrose.ExpDecay()
+    schedule = mlrose.ExpDecay(init_temp=10, exp_const=.1, min_temp=1)
     NNSA = mlrose.NeuralNetwork(hidden_nodes, activation='relu', algorithm='simulated_annealing', max_iters=100,
                                 bias=True, is_classifier=True, learning_rate=0.1, clip_max=10000000000.0,
                                 schedule=schedule, random_state=1, early_stopping=True)
@@ -67,7 +65,7 @@ def neuralNetworkWeights():
 
 
 def radomHillClimb(fitness, x):
-    # This code was originally taken and modified from
+    # This code was originally taken and modified from https://mlrose.readthedocs.io/en/stable/source/intro.html
     start = time.time()
 
     # Initialize fitness function object using pre-defined class
@@ -102,7 +100,7 @@ def radomHillClimb(fitness, x):
 
 
 def simulatedAnnealing(fitness, x):
-    # This code was originally taken and modified from
+    # This code was originally taken and modified from https://mlrose.readthedocs.io/en/stable/source/intro.html
     start = time.time()
 
     # Initialize fitness function object using pre-defined class
@@ -141,7 +139,7 @@ def simulatedAnnealing(fitness, x):
 
 
 def geneticAlgorithm(fitness, x):
-    # This code was originally taken and modified from
+    # This code was originally taken and modified from https://mlrose.readthedocs.io/en/stable/source/intro.html
     start = time.time()
 
     # Initialize fitness function object using pre-defined class
@@ -169,7 +167,7 @@ def geneticAlgorithm(fitness, x):
 
 
 def MIMIC(fitness, x):
-    # This code was originally taken and modified from
+    # This code was originally taken and modified from https://mlrose.readthedocs.io/en/stable/source/intro.html
     start = time.time()
 
     # Initialize fitness function object using pre-defined class
